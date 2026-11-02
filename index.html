@@ -318,11 +318,8 @@ dl.kv dt{color:var(--muted)} dl.kv dd{margin:0;word-break:break-word}
   </div>
 
   <div id="modal-root"></div>
+  <script src="config.js"></script>
   <script>
-window.SCI_CONFIG = {
-    API_URL: "https://script.google.com/macros/s/AKfycbwRfbjf66pPUYCU-U3wVgghglYCsPfkcpFgBGfZN1VA8q4TE0oU3kyc-V4yl4mr--CKnA/exec"
-};
-</script>
   (function () {
     var q = new URLSearchParams(location.search), p = q.get('page') || '', t = (q.get('token') || '').toLowerCase();
     var okT = /^[a-f0-9]{64}$/.test(t), o = (q.get('org') || '').toLowerCase();
@@ -400,7 +397,7 @@ window.SCI_CONFIG = {
         return;
       }
       var url = window.SCI_API_URL;
-      if (!url || /https://script.google.com/macros/s/AKfycbwRfbjf66pPUYCU-U3wVgghglYCsPfkcpFgBGfZN1VA8q4TE0oU3kyc-V4yl4mr--CKnA/exec/.test(url)) { reject({ netFail: true, noUrl: true }); return; }
+      if (!url || /PUT_YOUR/.test(url)) { reject({ netFail: true, noUrl: true }); return; }
       var body = isPublic ? { public: true, action: req.action, payload: req.payload, org: req.org } : req;
       fetch(url, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(body),
                    credentials: 'omit', redirect: 'follow', cache: 'no-store' })
